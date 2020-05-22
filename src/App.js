@@ -1,26 +1,53 @@
 import React from 'react';
-import logo from './logo.svg';
+import Greeting from './components/Greeting.js';
+import ChooseForm from './components/ChooseForm.js';
+import JokeList from './components/JokeList.js';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      jokes: [],
+      favourite: [],
+      clicked: false
+    }
+
+    this.addJoke = this.addJoke.bind(this);
+  }
+
+  addJoke(item) {
+    const jokes = this.state.jokes;
+    console.table(item);
+    jokes.unshift(item);
+    this.setState({
+      clicked: !this.state.clicked
+    })
+  }
+
+  componentDidUpdate() {
+    console.log(this.state);
+  }
+
+  render() {
+    return (
+      <>
+        <header>
+          <h1>MSI 2020</h1>
+        </header>
+        <main>
+          <article>
+            <Greeting />
+            <section>
+              <ChooseForm addJoke={this.addJoke} />
+            </section>
+            <JokeList jokes={this.state.jokes} />
+          </article>
+        </main>
+      </>
+    );
+  }
 }
 
 export default App;

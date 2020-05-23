@@ -15,6 +15,8 @@ class App extends React.Component {
     }
 
     this.addJoke = this.addJoke.bind(this);
+    this.addFavourite = this.addFavourite.bind(this);
+    this.removeFavourite = this.removeFavourite.bind(this);
   }
 
   addJoke(item) {
@@ -28,6 +30,7 @@ class App extends React.Component {
   addFavourite(item) {
     const favourite = this.state.favourite;
     favourite.unshift(item);
+    console.table(this.state.favourite);
     this.setState({
       tick: !this.state.tick
     })
@@ -35,7 +38,9 @@ class App extends React.Component {
 
   removeFavourite(item) {
     const favourite = this.state.favourite;
-    // Find an index with a joke and remove item
+    const itemIndex = favourite.indexOf(item);
+    console.log(itemIndex);
+    favourite.splice(itemIndex, 1);
     this.setState({
       tick: !this.state.tick
     })
@@ -53,9 +58,12 @@ class App extends React.Component {
             <section>
               <ChooseForm addJoke={this.addJoke} />
             </section>
-            <JokeList jokes={this.state.jokes} addFavourite={this.addFavourite} />
+            <JokeList jokes={this.state.jokes} addFavourite={this.addFavourite} removeFavourite={this.removeFavourite} />
           </article>
         </main>
+        <aside style={{color: 'green'}}>
+          <JokeList jokes={this.state.favourite} style={{color: 'green'}} removeFavourite={this.removeFavourite}/>
+        </aside>
       </>
     );
   }

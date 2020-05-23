@@ -16,11 +16,18 @@ class Joke extends React.Component {
     }
 
     handleClick() {
-        this.props.joke.isFavourite = !this.props.joke.isFavourite;
+        // this.props.joke.isFavourite = !this.props.joke.isFavourite;
+        if(!this.props.joke.isFavourite) {
+            this.props.addFavourite(this.props.joke);
+            this.props.joke.isFavourite = !this.props.joke.isFavourite;
+        } else {
+            this.props.removeFavourite(this.props.joke);
+            this.props.joke.isFavourite = !this.props.joke.isFavourite;
+        }
         this.setState({
             joke: this.props.joke
         });
-        console.table(this.props.joke);
+        console.log(this.props.joke);
     }
 
     render() {
@@ -32,8 +39,8 @@ class Joke extends React.Component {
             <div>
                 <span>ID:</span><a href={this.props.joke.url}>{this.props.joke.id}</a>
                 <p>{this.props.joke.value}</p>
-                <span>Last update: {convertMsToHours(msAgo)}</span>
-                
+                <span>Last update: {convertMsToHours(msAgo)} hours ago</span>
+
                 <Category category={this.props.joke.categories}/>
 
                 <button onClick={this.handleClick} >

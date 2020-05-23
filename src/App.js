@@ -25,6 +25,22 @@ class App extends React.Component {
     })
   }
 
+  addFavourite(item) {
+    const favourite = this.state.favourite;
+    favourite.unshift(item);
+    this.setState({
+      tick: !this.state.tick
+    })
+  }
+
+  removeFavourite(item) {
+    const favourite = this.state.favourite;
+    // Find an index with a joke and remove item
+    this.setState({
+      tick: !this.state.tick
+    })
+  }
+
   render() {
     return (
       <>
@@ -37,7 +53,7 @@ class App extends React.Component {
             <section>
               <ChooseForm addJoke={this.addJoke} />
             </section>
-            <JokeList jokes={this.state.jokes} />
+            <JokeList jokes={this.state.jokes} addFavourite={this.addFavourite} />
           </article>
         </main>
       </>

@@ -1,10 +1,12 @@
 import React from 'react';
-
+import Joke from './Joke.js'
 class JokeList extends React.Component {
 
     render() {
         return (
-            <ul>{this.props.jokes.map(el => <li>{el.value}</li>)}</ul>
+            <>
+                {this.props.jokes.map(el => <Joke joke={el} />)}
+            </>
         );
     }
 }

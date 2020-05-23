@@ -50,8 +50,8 @@ class ChooseForm extends React.Component {
         }
 
         if (joke !== undefined && !joke.error) {
+            joke.isFavourite = false;
             this.props.addJoke(joke);
-            console.table(joke);
         }
         else {
             alert('Error');

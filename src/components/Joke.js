@@ -16,13 +16,12 @@ class Joke extends React.Component {
     }
 
     handleClick() {
-        // this.props.joke.isFavourite = !this.props.joke.isFavourite;
         if(!this.props.joke.isFavourite) {
+            this.props.joke.isFavourite = !this.props.joke.isFavourite;
             this.props.addFavourite(this.props.joke);
-            this.props.joke.isFavourite = !this.props.joke.isFavourite;
         } else {
-            this.props.removeFavourite(this.props.joke);
             this.props.joke.isFavourite = !this.props.joke.isFavourite;
+            this.props.removeFavourite(this.props.joke);
         }
         this.setState({
             joke: this.props.joke

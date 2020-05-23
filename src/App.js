@@ -4,13 +4,13 @@ import ChooseForm from './components/ChooseForm.js';
 import JokeList from './components/JokeList.js';
 import './App.css';
 
-
+// localStorage.removeItem('favourite');
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       jokes: [],
-      favourite: [],
+      favourite: JSON.parse(localStorage.getItem('favourite') || '[]'),
       tick: false
     }
 
@@ -31,6 +31,7 @@ class App extends React.Component {
     const favourite = this.state.favourite;
     favourite.unshift(item);
     console.table(this.state.favourite);
+    localStorage.setItem('favourite', JSON.stringify(favourite));
     this.setState({
       tick: !this.state.tick
     })
@@ -41,6 +42,7 @@ class App extends React.Component {
     const itemIndex = favourite.indexOf(item);
     console.log(itemIndex);
     favourite.splice(itemIndex, 1);
+    localStorage.setItem('favourite', JSON.stringify(favourite));
     this.setState({
       tick: !this.state.tick
     })

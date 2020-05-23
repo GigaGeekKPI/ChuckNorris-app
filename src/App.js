@@ -11,7 +11,7 @@ class App extends React.Component {
     this.state = {
       jokes: [],
       favourite: [],
-      clicked: false
+      tick: false
     }
 
     this.addJoke = this.addJoke.bind(this);
@@ -19,15 +19,10 @@ class App extends React.Component {
 
   addJoke(item) {
     const jokes = this.state.jokes;
-    console.table(item);
     jokes.unshift(item);
     this.setState({
-      clicked: !this.state.clicked
+      tick: !this.state.tick
     })
-  }
-
-  componentDidUpdate() {
-    console.log(this.state);
   }
 
   render() {

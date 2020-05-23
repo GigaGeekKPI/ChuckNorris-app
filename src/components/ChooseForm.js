@@ -6,7 +6,7 @@ class ChooseForm extends React.Component {
         super(props);
         this.state = {
             decisionType: 'random',
-            category: 'food',
+            category: '',
             query: ''
         }
         //Fetch jokes
@@ -15,9 +15,11 @@ class ChooseForm extends React.Component {
         this.getFromQuery = this.getFromQuery.bind(this);
 
         //Form handlers
-        this.handleSubmit = this.handleSubmit.bind(this);
         this.handleDecisionChange = this.handleDecisionChange.bind(this);
         this.onInputChange = this.onInputChange.bind(this);
+        this.onCategoryChange = this.onCategoryChange.bind(this);
+
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     async handleSubmit(event) {
@@ -47,16 +49,20 @@ class ChooseForm extends React.Component {
                 break;
         }
 
-        if (joke) {
+        if (joke !== undefined && !joke.error) {
             this.props.addJoke(joke);
-        } else {
-            alert("Sorry didn't find joke");
+            console.table(joke);
+        }
+        else {
+            alert('Error');
         }
     }
 
     handleDecisionChange(event) {
         this.setState({
-            decisionType: event.target.value
+            decisionType: event.target.value,
+            category: '',
+            query: ''
         });
     }
 
@@ -64,6 +70,12 @@ class ChooseForm extends React.Component {
         this.setState({
             query: event.target.value
         })
+    }
+
+    onCategoryChange(event) {
+        this.setState({
+            category: event.target.value
+        });
     }
 
     async getRandom() {
@@ -92,14 +104,15 @@ class ChooseForm extends React.Component {
 
     render() {
 
+        //Display or not display - ok
         let text;
         if (this.state.decisionType === 'search') {
-            text = <input type='text' value={this.state.query} onChange={this.onInputChange} />;
+            text = <input type='text' value={this.state.query} onChange={this.onInputChange} required />;
         }
 
         let categories;
         if (this.state.decisionType === 'category') {
-            categories = <CategoryList />;
+            categories = <CategoryList category={this.state.category} onChange={this.onCategoryChange} />;
         }
 
         return (
@@ -114,7 +127,8 @@ class ChooseForm extends React.Component {
                 <input type='radio' name='ReqType' value='search' checked={this.state.decisionType === 'search'} onChange={this.handleDecisionChange} />
                 <label>Search</label><br />
                 {text}
-                <br/>
+                <br />
+
                 <button>Get a joke</button>
             </form>
         );

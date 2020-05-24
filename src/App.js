@@ -50,23 +50,28 @@ class App extends React.Component {
 
   render() {
     return (
-      <>
-        <header>
-          <h1>MSI 2020</h1>
-        </header>
-        <main>
-          <article>
-            <Greeting />
-            <section>
-              <ChooseForm addJoke={this.addJoke} />
-            </section>
-            <JokeList jokes={this.state.jokes} addFavourite={this.addFavourite} removeFavourite={this.removeFavourite} />
-          </article>
-        </main>
-        <aside style={{color: 'green'}}>
-          <JokeList jokes={this.state.favourite} style={{color: 'green'}} removeFavourite={this.removeFavourite}/>
-        </aside>
-      </>
+      <div className='App'>
+        <div className='main-container'>
+          <header className='main-header'>
+            <h1>MSI 2020</h1>
+          </header>
+          <main>
+            <article>
+              <Greeting />
+              <section>
+                <ChooseForm addJoke={this.addJoke} />
+              </section>
+              <JokeList jokes={this.state.jokes} addFavourite={this.addFavourite} removeFavourite={this.removeFavourite} />
+            </article>
+          </main>
+        </div>
+        <div className='aside-container'>
+          <aside className='Favourite'>
+            <h2>Favourite</h2>
+            <JokeList jokes={this.state.favourite} style={{ color: 'green' }} removeFavourite={this.removeFavourite} />
+          </aside>
+        </div>
+      </div>
     );
   }
 }

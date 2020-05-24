@@ -1,38 +1,256 @@
+* {
+  color: #333333;
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+}
+
+.main-container {
+  width: 65%;
+  padding-top: 40px;
+}
+
+.aside-container {
+  width: 35%;
+  background: #F8F8F8;
+  height: 100vh;
+  padding-top: 40px;
+}
+
+.main-header, main {
+  width: 75%;
+  margin: auto;
+}
+
+.main-header h1 {
+  margin-top: 0;
+}
+
+.Favourite {
+  width: 80%;
+  margin: auto;
+}
+
+.Favourite h2 {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+  color: #ABABAB;
+  margin-top: 0;
+}
+
+.Greeting {
+  margin: 40px 0;
+}
+
+h1 {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.greeting-header {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 44px;
+  margin-bottom: 0;
+}
+
+.greeting-paragraph {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 44px;
+  margin-top: 0;
+}
+
+.radio-container {
+  display: block;
+  cursor: pointer;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 26px;
+  margin-bottom: 10px;
+}
+
+.Category {
+  display: inline-block;
+  border: 2px solid #F8F8F8;
+  border-radius: 6px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.Category label {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  padding: 6px 15px;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #ABABAB;
+}
+
+input[type=radio]:checked+.Category {
+  background: #F8F8F8;
+}
+
+input[type=radio]:checked+.Category label {
+  color: black;
+}
+
+input[type=text] {
+  border: 2px solid #333333;
+  border-radius: 10px;
+  display: block;
+  padding: 10px 15px;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 20px 0 30px;
+  outline: none;
+}
+
+input::placeholder {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+  color: #ABABAB;
+}
+
+.submit-button {
+  background: linear-gradient(92.01deg, #8EA7FF 0%, #7291FF 100%);
+  border-radius: 10px;
+  border: 0;
+  padding: 10px 40px;
+  margin: 20px 0 40px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 22px;
+  color: #FFFFFF;
+  cursor: pointer;
+  outline: none;
+}
+
+.like-button {
+  margin-left: 0;
+  cursor: pointer;
+  border: 0;
+  outline: 0;
+  background: 0;
+}
+
+.joke-container {
+  background: #F8F8F8;
+  border-radius: 20px;
+  margin: 20px 0;
+  padding: 40px;
+  display: flex;
+  justify-content: flex-end;
+  flex-flow: row wrap;
+}
+
+.joke-content {
+  width: 100%;
+  justify-content: space-between;
+  display: flex;
+  align-items: top;
+}
+
+.joke-content-info {
+  width: 90%;
+}
+
+.joke-content .message {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  margin-top: 0;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  background-color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.joke-content-info-id {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 14px;
+  margin: 0 0 5px;
+  color: #ABABAB;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.joke-content-info-id a {
+  color: #8EA7FF;
+}
+
+.joke-content-info-id svg {
+  margin-left: 5px;
+}
+
+.joke-content-info-value {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 26px;
+  margin-top: 5px;
+  color: #333333;
+}
+
+.joke-secondary-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.joke-secondary-content p {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 14px;
+  color: #ABABAB;
+}
+
+.joke-secondary-content span {
+  font-weight: 500;
+  color: #ABABAB;
+}
+
+.joke-secondary-content .Category {
+  margin: 0;
+  background-color: white;
+}
+
+.joke-secondary-content .Category label {
+  font-size: 12px;
+  line-height: 16px;
+  color: #333;
+}
+
+.aside-container .joke-container {
+  background: #FFFFFF;
+  border: 1px solid #F8F8F8;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 20px;
 }

@@ -107,7 +107,7 @@ class ChooseForm extends React.Component {
         //Display or not display - ok
         let text;
         if (this.state.decisionType === 'search') {
-            text = <input type='text' value={this.state.query} onChange={this.onInputChange} required />;
+            text = <input type='text' value={this.state.query} onChange={this.onInputChange} required placeholder='Free text search...'/>;
         }
 
         let categories;
@@ -117,19 +117,21 @@ class ChooseForm extends React.Component {
 
         return (
             <form onSubmit={this.handleSubmit}>
-                <input type='radio' name='ReqType' value='random' checked={this.state.decisionType === 'random'} onChange={this.handleDecisionChange} />
-                <label>Random</label><br />
-
-                <input type='radio' name='ReqType' value='category' checked={this.state.decisionType === 'category'} onChange={this.handleDecisionChange} />
-                <label>From categories</label><br />
+                <label className='radio-container'>
+                    <input type='radio' name='ReqType' value='random' checked={this.state.decisionType === 'random'} onChange={this.handleDecisionChange} />
+                    <span>Random</span>
+                </label>
+                <label className='radio-container'>
+                    <input type='radio' name='ReqType' value='category' checked={this.state.decisionType === 'category'} onChange={this.handleDecisionChange} />
+                    <span>From categories</span>
+                </label>
                 {categories}
-
-                <input type='radio' name='ReqType' value='search' checked={this.state.decisionType === 'search'} onChange={this.handleDecisionChange} />
-                <label>Search</label><br />
+                <label className='radio-container'>
+                    <input type='radio' name='ReqType' value='search' checked={this.state.decisionType === 'search'} onChange={this.handleDecisionChange} />
+                    <span>Search</span>
+                </label>
                 {text}
-                <br />
-
-                <button>Get a joke</button>
+                <button className='submit-button'>Get a joke</button>
             </form>
         );
     }

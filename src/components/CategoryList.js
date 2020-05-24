@@ -20,7 +20,7 @@ class CategoryList extends React.Component {
     render() {
         return (
             <>
-                {this.state.categories.map(el => <Category category={el} onSelect={this.props.onChange} />)}
+                {this.state.categories.map((el, index) => <Category category={el} onSelect={this.props.onChange} key={index} />)}
             </>
         );
     }

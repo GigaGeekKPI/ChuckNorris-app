@@ -3,7 +3,9 @@
 }
 
 html, body, .App, .App+div {
-  height: 100%
+  min-height: 100vh;
+  height: 100%;
+  position: relative;
 }
 
 .App {
@@ -15,7 +17,7 @@ html, body, .App, .App+div {
   padding-top: 40px;
 }
 
-.aside-container {
+.aside-container, .hidden-aside-container {
   width: 35%;
   background: #F8F8F8;
   padding-top: 40px;
@@ -84,6 +86,10 @@ h1 {
   font-size: 18px;
   line-height: 26px;
   margin-bottom: 10px;
+}
+
+.radio-container span {
+  margin-left: 10px;
 }
 
 .Category {
@@ -249,11 +255,75 @@ input::placeholder {
   color: #333;
 }
 
-.aside-container .joke-container {
+.aside-container .joke-container, .hidden-aside-container .joke-container {
   background: #FFFFFF;
   border: 1px solid #F8F8F8;
   box-sizing: border-box;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   padding: 20px;
+}
+
+.aside-container .joke-container label, .hidden-aside-container .joke-container label {
+  display: none;
+}
+
+.hidden-aside-container {
+  display: none;
+}
+
+.burger {
+  margin-top: 40px;
+  display: none;
+  cursor: pointer;
+  position: absolute;
+
+  right: 0;
+}
+
+.burger h2 {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+  color: #ABABAB;
+  margin: 0 40px 0 10px;
+}
+
+@media (max-width: 768px) and (min-width: 481px) {
+  .burger {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-start;
+    height: 25px;
+    z-index: 2;
+  }
+  .aside-container {
+    display: none;
+  }
+  .hidden-aside-container {
+    padding-top: 60px;
+    display: block;
+    position: absolute;
+    width: 60%;
+    height: 100%;
+    right: 0;
+    z-index: 1;
+  }
+
+  .dark-side {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 0;
+  }
+
+  .main-container {
+    width: 100%;
+  }
+  .main-header, main {
+    width: 90%;
+  }
 }

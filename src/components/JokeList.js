@@ -4,7 +4,7 @@ class JokeList extends React.Component {
     render() {
         return (
             <>
-                {this.props.jokes.map(el => <Joke joke={el} addFavourite={this.props.addFavourite} removeFavourite={this.props.removeFavourite} />)}
+                {this.props.jokes.map(el => <Joke joke={el} addFavourite={this.props.addFavourite} removeFavourite={this.props.removeFavourite} key={Math.random()}/>)}
             </>
         );
     }

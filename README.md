@@ -5,6 +5,7 @@ Hi ! This application was made to learn ReactJS and practice using an API. But t
 
 ---
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Run app -> https://gigageekkpi.github.io/ChuckNorris-app/
 
 In the application you can get jokes from chucknorris.io. It's a free JSON API for hand curated Chuck Norris facts. [Read more](https://api.chucknorris.io/#!). You have:
 

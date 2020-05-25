@@ -61,14 +61,14 @@ class App extends React.Component {
     let asideMove = window.matchMedia("(max-width: 480px)").matches ? '0%' : '40%';
 
     if (this.state.hidden) {
-      darkSide = <div className='dark-side' style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)' }} />
+      darkSide = <div className='dark-side' style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)', display: 'block' }} />
       aside = <div className='hidden-aside-container' style={{ left: asideMove }}>
         <aside className='Favourite'>
           <JokeList jokes={this.state.favourite} removeFavourite={this.removeFavourite} />
         </aside>
       </div>
     } else {
-      darkSide = <div className='dark-side' style={{ backgroundColor: 'rgba(0, 0, 0, 0)' }} />
+      darkSide = <div className='dark-side' style={{ backgroundColor: 'rgba(0, 0, 0, 0)', display:'none' }} />
       aside = <div className='hidden-aside-container' style={{ left: '100%' }}>
         <aside className='Favourite'>
           <JokeList jokes={this.state.favourite} removeFavourite={this.removeFavourite} />

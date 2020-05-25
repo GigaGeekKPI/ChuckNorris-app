@@ -58,11 +58,20 @@ class App extends React.Component {
   render() {
     let aside;
     let darkSide;
+    let asideMove = window.matchMedia("(max-width: 480px)").matches ? '0%' : '40%';
+
     if (this.state.hidden) {
-      darkSide = <div className='dark-side' />
-      aside = <div className='hidden-aside-container'>
+      darkSide = <div className='dark-side' style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)' }} />
+      aside = <div className='hidden-aside-container' style={{ left: asideMove }}>
         <aside className='Favourite'>
-          <JokeList jokes={this.state.favourite} style={{ color: 'green' }} removeFavourite={this.removeFavourite} />
+          <JokeList jokes={this.state.favourite} removeFavourite={this.removeFavourite} />
+        </aside>
+      </div>
+    } else {
+      darkSide = <div className='dark-side' style={{ backgroundColor: 'rgba(0, 0, 0, 0)' }} />
+      aside = <div className='hidden-aside-container' style={{ left: '100%' }}>
+        <aside className='Favourite'>
+          <JokeList jokes={this.state.favourite} removeFavourite={this.removeFavourite} />
         </aside>
       </div>
     }
@@ -85,7 +94,7 @@ class App extends React.Component {
         <div className='aside-container'>
           <aside className='Favourite'>
             <h2>Favourite</h2>
-            <JokeList jokes={this.state.favourite} style={{ color: 'green' }} removeFavourite={this.removeFavourite} />
+            <JokeList jokes={this.state.favourite} removeFavourite={this.removeFavourite} />
           </aside>
         </div>
         <Burger toggle={this.toggle} hidden={this.state.hidden} />

@@ -278,7 +278,6 @@ input::placeholder {
   display: none;
   cursor: pointer;
   position: absolute;
-
   right: 0;
 }
 
@@ -292,8 +291,43 @@ input::placeholder {
   margin: 0 40px 0 10px;
 }
 
+.example-enter {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.example-enter-active {
+  background-color: rgba(0, 0, 0, 0.3);
+  transition: all ease-out 0.3s;
+}
+
+.example-enter-done {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.example-exit {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.example-exit-active {
+  background-color: rgba(0, 0, 0, 0);
+  transition: all ease-out 0.3s;
+}
+
+.example-exit-done {
+  background-color: rgba(0, 0, 0, 0.0);
+  left: 100%;
+}
+
+.dark-side-main {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  z-index: 0;
+}
+
 /* @media (max-width: 768px) and (min-width: 481px) { */
-  @media (max-width: 768px) {
+
+@media (max-width: 768px) {
   .burger {
     display: flex;
     flex-direction: row-reverse;
@@ -313,15 +347,6 @@ input::placeholder {
     transition: all ease-out 0.3s;
     z-index: 1;
   }
-
-  .dark-side {
-    position: fixed;
-    height: 100vh;
-    width: 100vw;
-    z-index: 0;
-    transition: all ease-out 0.3s;
-  }
-
   .main-container {
     width: 100%;
   }
@@ -334,7 +359,6 @@ input::placeholder {
   .hidden-aside-container {
     width: 100%;
   }
-
   .joke-secondary-content {
     flex-direction: column;
     align-items: flex-start;

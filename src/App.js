@@ -4,6 +4,7 @@ import ChooseForm from './components/ChooseForm.js';
 import JokeList from './components/JokeList.js';
 import Burger from './components/Burger.js'
 import './App.css';
+import { CSSTransition } from 'react-transition-group'
 
 // localStorage.removeItem('favourite');
 class App extends React.Component {
@@ -43,6 +44,7 @@ class App extends React.Component {
     this.setState({
       hidden: !this.state.hidden
     });
+    console.log(this.state.hidden);
   }
 
   removeFavourite(item) {
@@ -57,18 +59,15 @@ class App extends React.Component {
 
   render() {
     let aside;
-    let darkSide;
     let asideMove = window.matchMedia("(max-width: 480px)").matches ? '0%' : '40%';
 
     if (this.state.hidden) {
-      darkSide = <div className='dark-side' style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)', display: 'block' }} />
       aside = <div className='hidden-aside-container' style={{ left: asideMove }}>
         <aside className='Favourite'>
           <JokeList jokes={this.state.favourite} removeFavourite={this.removeFavourite} />
         </aside>
       </div>
     } else {
-      darkSide = <div className='dark-side' style={{ backgroundColor: 'rgba(0, 0, 0, 0)', display:'none' }} />
       aside = <div className='hidden-aside-container' style={{ left: '100%' }}>
         <aside className='Favourite'>
           <JokeList jokes={this.state.favourite} removeFavourite={this.removeFavourite} />
@@ -99,7 +98,9 @@ class App extends React.Component {
         </div>
         <Burger toggle={this.toggle} hidden={this.state.hidden} />
         {aside}
-        {darkSide}
+        <CSSTransition in={this.state.hidden} timeout={300} classNames="example">
+          <div className='dark-side-main' />
+        </CSSTransition>
       </div>
     );
   }

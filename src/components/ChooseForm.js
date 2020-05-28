@@ -107,7 +107,7 @@ class ChooseForm extends React.Component {
         //Display or not display - ok
         let text;
         if (this.state.decisionType === 'search') {
-            text = <input type='text' value={this.state.query} onChange={this.onInputChange} required placeholder='Free text search...'/>;
+            text = <input type='text' value={this.state.query} onChange={this.onInputChange} required placeholder='Free text search...' className='scale-in-hor-center'/>;
         }
 
         let categories;

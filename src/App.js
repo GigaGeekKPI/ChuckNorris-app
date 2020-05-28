@@ -2,9 +2,11 @@ import React from 'react';
 import Greeting from './components/Greeting.js';
 import ChooseForm from './components/ChooseForm.js';
 import JokeList from './components/JokeList.js';
-import Burger from './components/Burger.js'
+import Burger from './components/Burger.js';
+import DarkSide from './components/DarkSide.js'
+import { CSSTransition } from 'react-transition-group';
 import './App.css';
-import { CSSTransition } from 'react-transition-group'
+
 
 // localStorage.removeItem('favourite');
 class App extends React.Component {
@@ -44,7 +46,6 @@ class App extends React.Component {
     this.setState({
       hidden: !this.state.hidden
     });
-    console.log(this.state.hidden);
   }
 
   removeFavourite(item) {
@@ -98,8 +99,8 @@ class App extends React.Component {
         </div>
         <Burger toggle={this.toggle} hidden={this.state.hidden} />
         {aside}
-        <CSSTransition in={this.state.hidden} timeout={300} classNames="example">
-          <div className='dark-side-main' />
+        <CSSTransition in={this.state.hidden} timeout={300} classNames="dark-side">
+          <DarkSide />
         </CSSTransition>
       </div>
     );
